@@ -97,6 +97,7 @@
 		1ACE599B2843FF1300A102C1 /* RestaurantListVCIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListVCIntegrationTest.swift; sourceTree = "<group>"; };
 		1ACE599D284411D600A102C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		1ACE599E284411D600A102C1 /* Answers to technical questions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Answers to technical questions.md"; sourceTree = SOURCE_ROOT; };
+		1ACE59A12844138E00A102C1 /* JOURNAL.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = JOURNAL.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +159,7 @@
 				1A0255D4283A31C600BBB521 /* LaunchScreen.storyboard */,
 				1ACE599E284411D600A102C1 /* Answers to technical questions.md */,
 				1ACE599D284411D600A102C1 /* README.md */,
+				1ACE59A12844138E00A102C1 /* JOURNAL.md */,
 				1A0255D7283A31C600BBB521 /* Info.plist */,
 			);
 			path = JustEat;
