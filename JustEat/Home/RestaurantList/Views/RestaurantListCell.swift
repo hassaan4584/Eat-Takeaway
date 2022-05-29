@@ -29,6 +29,9 @@ class RestaurantListCell: UITableViewCell {
         self.selectedBackgroundView = highlightedView
     }
 
+    
+    /// Update cell data
+    /// - Parameter restaurant: Restaurant object against which the cell is to be populated
     func setCellData(_ restaurant: Restaurant) {
         self.restaurantNameLabel.text = restaurant.name ?? "-"
         if let ratings = restaurant.ratingStars {

@@ -15,7 +15,7 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
     let restaurantListViewModel: RestaurantListViewModelProtocol
     private var dataSource: UITableViewDiffableDataSource<Int, Restaurant>?
 
-    let activityIndicator: UIActivityIndicatorView
+    private let activityIndicator: UIActivityIndicatorView
     let searchController: UISearchController
 
     @IBOutlet weak var restaurantListTableview: UITableView!
@@ -63,6 +63,7 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
     }
 
     // MARK: - Search Controller
+    /// Adding SearchController in the navigation item of this VC
     private func setupSearchController() {
         self.searchController.searchBar.delegate = self
         self.searchController.obscuresBackgroundDuringPresentation = false
@@ -79,6 +80,7 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
     }
 
     // MARK: - UITableview
+    /// This function is to create Tableview cells as per need.
     private func configureDataSource() {
         let dataSource = RestaurantListDatasource(tableView: self.restaurantListTableview) {
             (tableview: UITableView, indexPath: IndexPath, restaurant: Restaurant) -> UITableViewCell? in
@@ -101,7 +103,8 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
         viewModel.error.observe(on: self) { [weak self] errorMessage in self?.showError(errorMessage) }
         viewModel.query.observe(on: self) { [weak self] in self?.updateSearchQuery($0) }
     }
-
+    
+    /// This function acts to update RestaurantList and hide error messages when needed.
     private func updateItems() {
         var snapshot = RestaurantListSnapshot()
         snapshot.appendSections([0])
@@ -112,6 +115,7 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
         self.restaurantListTableview.isHidden = self.restaurantListViewModel.isEmpty
     }
 
+    /// Based on `shouldShowLoader`, this function will show/hide loader
     private func updateLoading(_ shouldShowLoader: Bool) {
         if shouldShowLoader {
             self.activityIndicator.startAnimating()
@@ -119,11 +123,16 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
             self.activityIndicator.stopAnimating()
         }
     }
+    
+    /// When user searches a query, we want to re-set  query in the searchbar
     private func updateSearchQuery(_ query: String) {
         searchController.isActive = false
         searchController.searchBar.text = query
     }
 
+    
+    /// When Backed returns error or restaurants are not found, show information to user
+    /// - Parameter errorMessage: The message to be shown to user
     private func showError(_ errorMessage: String) {
         guard !errorMessage.isEmpty else { return }
         self.emptyRestultsTitleLabel.text = errorMessage

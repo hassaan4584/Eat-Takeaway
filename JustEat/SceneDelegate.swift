@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         window = UIWindow()
         window?.windowScene = scene as? UIWindowScene
+        // Setting up RestaurantListViewController with dependencies
         let restaurantListVM = RestaurantListViewModel(restaurantNetworkService: RestaurantNetworkSercice(networkManager: NetworkManager()))
         let restaurantListController = RestaurantListViewController.createViewController(restaurantListVM: restaurantListVM)
         let navigationController = UINavigationController(rootViewController: restaurantListController)
