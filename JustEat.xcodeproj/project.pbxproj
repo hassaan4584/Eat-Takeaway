@@ -39,6 +39,8 @@
 		1ACE59982843FAD000A102C1 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE59972843FAD000A102C1 /* NetworkLogger.swift */; };
 		1ACE599A2843FB3400A102C1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE59992843FB3400A102C1 /* NetworkError.swift */; };
 		1ACE599C2843FF1300A102C1 /* RestaurantListVCIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE599B2843FF1300A102C1 /* RestaurantListVCIntegrationTest.swift */; };
+		1ACE599F284411D600A102C1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE599D284411D600A102C1 /* README.md */; };
+		1ACE59A0284411D600A102C1 /* Answers to technical questions.md in Resources */ = {isa = PBXBuildFile; fileRef = 1ACE599E284411D600A102C1 /* Answers to technical questions.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		1ACE59972843FAD000A102C1 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		1ACE59992843FB3400A102C1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1ACE599B2843FF1300A102C1 /* RestaurantListVCIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListVCIntegrationTest.swift; sourceTree = "<group>"; };
+		1ACE599D284411D600A102C1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		1ACE599E284411D600A102C1 /* Answers to technical questions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Answers to technical questions.md"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				1A0255CF283A31C400BBB521 /* Main.storyboard */,
 				1A0255D2283A31C600BBB521 /* Assets.xcassets */,
 				1A0255D4283A31C600BBB521 /* LaunchScreen.storyboard */,
+				1ACE599E284411D600A102C1 /* Answers to technical questions.md */,
+				1ACE599D284411D600A102C1 /* README.md */,
 				1A0255D7283A31C600BBB521 /* Info.plist */,
 			);
 			path = JustEat;
@@ -426,6 +432,8 @@
 			files = (
 				1A0255D6283A31C600BBB521 /* LaunchScreen.storyboard in Resources */,
 				1A0255D3283A31C600BBB521 /* Assets.xcassets in Resources */,
+				1ACE599F284411D600A102C1 /* README.md in Resources */,
+				1ACE59A0284411D600A102C1 /* Answers to technical questions.md in Resources */,
 				1A0255D1283A31C400BBB521 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
