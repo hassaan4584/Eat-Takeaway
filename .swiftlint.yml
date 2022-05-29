@@ -1,0 +1,16 @@
+disabled_rules:
+  - line_length
+  - closure_parameter_position
+  - vertical_parameter_alignment
+
+identifier_name:
+  excluded: # excluded via string array
+    - id
+
+excluded:
+  - JustEat/AppDelegate.swift
+  - JustEat/SceneDelegate.swift
+
+#identifier_name:
+#  excluded: # excluded via string array
+#    - id
