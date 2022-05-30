@@ -33,7 +33,7 @@ class RestaurantListVCIntegrationTest: XCTestCase {
         sut.searchController.searchBar.searchTextField.text = queryStr
         sut.searchBarSearchButtonClicked(sut.searchController.searchBar)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            XCTAssertGreaterThan(self.sut.restaurantListViewModel.items.value.count, 0)
+            XCTAssertGreaterThan(self.sut.restaurantListViewModel.openRestaurants.value.count, 0)
             expectation.fulfill()
         }
 

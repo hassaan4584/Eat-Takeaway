@@ -15,8 +15,10 @@ protocol RestaurantListViewModelInput {
 }
 
 protocol RestaurantListViewModelOutput {
-    /// Observable List of Restaurant Items
-    var items: Observable<[Restaurant]> { get }
+    /// List of all Restaurant Items
+    var allRestaurants: [Restaurant] { get }
+    /// Observable List of Restaurant Items that are currently open
+    var openRestaurants: Observable<[Restaurant]> { get }
     /// Observable state indicates if loading is in progress
     var loading: Observable<Bool> { get }
     var query: Observable<String> { get }

@@ -84,7 +84,7 @@ class RestaurantListVMTests: XCTestCase {
         MockURLProtocol.stubResponseData = self.getRestaurantData(from: ec4mRestaurantsFilename)
         // Act
         sut.didSearch(query: "someSearch")
-        sut.items.observe(on: self) { _ in
+        sut.openRestaurants.observe(on: self) { _ in
             // Assert
             XCTAssertFalse(self.sut.isEmpty)
             expectation.fulfill()
@@ -98,9 +98,9 @@ class RestaurantListVMTests: XCTestCase {
         MockURLProtocol.stubResponseData = self.getRestaurantData(from: ec4mRestaurantsFilename)
         // Act
         sut.didSearch(query: "")
-        sut.items.observe(on: self) { _ in
+        sut.openRestaurants.observe(on: self) { _ in
             // Assert
-            XCTAssertEqual(self.sut.items.value.count, 171)
+            XCTAssertEqual(self.sut.openRestaurants.value.count, 171)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1.0)

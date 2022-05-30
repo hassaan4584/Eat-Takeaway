@@ -29,7 +29,6 @@ class RestaurantListCell: UITableViewCell {
         self.selectedBackgroundView = highlightedView
     }
 
-    
     /// Update cell data
     /// - Parameter restaurant: Restaurant object against which the cell is to be populated
     func setCellData(_ restaurant: Restaurant) {

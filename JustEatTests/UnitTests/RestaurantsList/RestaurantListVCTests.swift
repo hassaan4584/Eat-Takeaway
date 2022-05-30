@@ -68,7 +68,7 @@ class RestaurantListVCTests: XCTestCase {
         // Act
         sut.searchController.searchBar.searchTextField.text = queryStr
         sut.searchBarSearchButtonClicked(sut.searchController.searchBar)
-        sut.restaurantListViewModel.items.observe(on: sut) { _ in
+        sut.restaurantListViewModel.openRestaurants.observe(on: sut) { _ in
             // Assert
             XCTAssertTrue(self.sut.emptyRestultsTitleLabel.isHidden)
             XCTAssertFalse(self.sut.restaurantListTableview.isHidden)

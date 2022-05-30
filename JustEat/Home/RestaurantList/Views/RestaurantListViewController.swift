@@ -98,17 +98,17 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
 
     // MARK: - ViewModel Bindings
     private func bind(to viewModel: RestaurantListViewModelProtocol) {
-        viewModel.items.observe(on: self) { [weak self] _ in self?.updateItems() }
+        viewModel.openRestaurants.observe(on: self) { [weak self] _ in self?.updateItems() }
         viewModel.loading.observe(on: self) { [weak self] isLoading in self?.updateLoading(isLoading) }
         viewModel.error.observe(on: self) { [weak self] errorMessage in self?.showError(errorMessage) }
         viewModel.query.observe(on: self) { [weak self] in self?.updateSearchQuery($0) }
     }
-    
+
     /// This function acts to update RestaurantList and hide error messages when needed.
     private func updateItems() {
         var snapshot = RestaurantListSnapshot()
         snapshot.appendSections([0])
-        snapshot.appendItems(self.restaurantListViewModel.items.value)
+        snapshot.appendItems(self.restaurantListViewModel.openRestaurants.value)
         dataSource?.apply(snapshot, animatingDifferences: true)
         self.emptyRestultsTitleLabel.text = self.restaurantListViewModel.emptyDataTitle
         self.emptyRestultsTitleLabel.isHidden = !self.restaurantListViewModel.isEmpty
@@ -123,14 +123,13 @@ class RestaurantListViewController: UIViewController, UITableViewDelegate, UISea
             self.activityIndicator.stopAnimating()
         }
     }
-    
+
     /// When user searches a query, we want to re-set  query in the searchbar
     private func updateSearchQuery(_ query: String) {
         searchController.isActive = false
         searchController.searchBar.text = query
     }
 
-    
     /// When Backed returns error or restaurants are not found, show information to user
     /// - Parameter errorMessage: The message to be shown to user
     private func showError(_ errorMessage: String) {
