@@ -26,7 +26,6 @@ public final class Observable<Value> {
 
     public func observe(on observer: AnyObject, observerBlock: @escaping (Value) -> Void) {
         observers.append(Observer(observer: observer, block: observerBlock))
-//        observerBlock(self.value)
     }
 
     public func remove(observer: AnyObject) {
