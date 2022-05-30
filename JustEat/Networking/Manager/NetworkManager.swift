@@ -11,22 +11,25 @@ typealias ResultClosure = (Result<(URLResponse, Data), Error>) -> Void
 
 // MARK: NetworkManagerProtocol
 protocol NetworkManagerProtocol {
-    @discardableResult
 
+    /// This function makes the network call for the passed `Endpoint`
+    /// - Returns: The network request of `URLSessionDataTask`
+    @discardableResult
     func makeCall<T: Codable> (withEndPoint endpoint: Endpoint, _ completion: @escaping (Result<T, NetworkError>) -> Void) -> URLSessionDataTask
 }
 
 extension NetworkManagerProtocol {
-        /// Helper function to create a URLRequest object using EndPoint
-        func createRequest(with endpoint: Endpoint) -> URLRequest {
-            let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
-            var urlRequest = URLRequest.init(url: url)
-            urlRequest.allHTTPHeaderFields = endpoint.headers
-            urlRequest.httpMethod = endpoint.httpMethod
-            return urlRequest
-     }
+    /// Helper function to create a URLRequest object using EndPoint
+    func createRequest(with endpoint: Endpoint) -> URLRequest {
+        let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
+        var urlRequest = URLRequest.init(url: url)
+        urlRequest.allHTTPHeaderFields = endpoint.headers
+        urlRequest.httpMethod = endpoint.httpMethod
+        return urlRequest
+    }
 }
 
+// MARK: NetworkManager
 struct NetworkManager: NetworkManagerProtocol {
 
     private let session: URLSession
@@ -34,24 +37,19 @@ struct NetworkManager: NetworkManagerProtocol {
 
     init() {
         let config = URLSessionConfiguration.default
-        // changing cachePolicy because we want to fetch fresh data from server every time
         config.requestCachePolicy = .reloadIgnoringLocalCacheData
         self.session = URLSession(configuration: config)
         self.logger = DefaultNetworkLogger()
-
     }
+
+    /// Custom init function for initializer based dependecy injection
     init(session: URLSession, logger: NetworkLogger) {
         self.session = session
         self.logger = logger
     }
 
-    /**
-     This function makes the network call for the passed urlRequest
-     
-     - parameters:
-     - URLRequest: The urlRequest object that will be used to make api call
-     - completion: The completion handler that gets called when the api call receives the response
-     */
+    /// This function makes the network call for the passed `Endpoint`
+    /// - Returns: The network request of `URLSessionDataTask`
     @discardableResult
     func makeCall<T: Codable> (withEndPoint endpoint: Endpoint, _ completion: @escaping (Result<T, NetworkError>) -> Void) -> URLSessionDataTask {
 
@@ -89,7 +87,11 @@ struct NetworkManager: NetworkManagerProtocol {
         return urlSessionDataTask!
     }
 
-    /// make network request with the given request
+    /// Make actual network request witht the given request and send callback with `ResultClosure`
+    /// - Parameters:
+    ///   - urlRequest: The urlRequest to fetch data from server
+    ///   - result: Callback of type Result
+    /// - Returns: The network request of `URLSessionDataTask`
     @discardableResult
     private func request(with urlRequest: URLRequest, _ result: ResultClosure?) -> URLSessionDataTask? {
 
